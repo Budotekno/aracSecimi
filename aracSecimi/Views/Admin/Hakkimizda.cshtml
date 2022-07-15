@@ -1,0 +1,134 @@
+﻿@using aracSecimi.Models.Siniflar
+@model List<Hakkimizda>
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Hakkımızda</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="table">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                            <th width="300">Foto </th>
+                            <th width="150">Başlık</th>
+                            <th>Hakkımızda Yazı</th>
+                            <th >Güncelle</th>
+
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                <tr>
+
+                                    @foreach (var i in Model)
+                                    {
+                                        <td>
+                                            <img width="300" src="@i.FotoUrl" />
+                                        </td>
+                                        <td>@i.Baslik</td>
+                                        <td class="text-justify">@i.HakkimizdaYazi</td>
+
+                                        <td>
+                                            <a href="/Admin/HakkimizdaIdBul/@i.Id/"  data-toggle="modal" data-target="#exampleModal" class="btn btn-success">Güncelle</a>
+                                        </td>
+
+                                    }
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Modal güncelle -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hakkımızda Güncelle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            @using (Html.BeginForm("HakkimizdaGuncelle", "Admin", FormMethod.Post))
+            {
+
+                <div class="modal-body">
+
+
+
+
+
+                    @foreach (var i in Model)
+                    {
+                        <div class="form-group mb-3">
+                            <label for="exampleFormControlInput1">Başlık</label>
+                            <input  autocomplete="off" type="text" class="form-control" name="Baslik" value="@i.Baslik" id="exampleFormControlInput1" placeholder="Başlık giriniz">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="exampleFormControlTextarea1">Hakkımızda Yazı</label> <br />
+                            <textarea  autocomplete="off" id="exampleFormControlTextarea1" name="HakkimizdaYazi" class="form-control" rows="8" placeholder="Hakkımızda yazısı yazınız">@i.HakkimizdaYazi</textarea>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="exampleFormControlInput1">Fotoğraf Url</label>
+                            <input  autocomplete="off" type="text" class="form-control" id="exampleFormControlInput1" name="FotoUrl" value="@i.FotoUrl" placeholder="Fotoğraf url giriniz">
+                        </div>
+
+                    }
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<!--model güncelle end-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

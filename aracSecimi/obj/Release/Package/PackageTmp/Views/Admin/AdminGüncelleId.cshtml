@@ -1,0 +1,60 @@
+﻿@model aracSecimi.Models.Siniflar.Admin
+
+
+
+@{
+    ViewBag.Title = "AdminGüncelleId";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Admin Güncelle</h4>
+                </div>
+                <div class="card-body">
+
+
+                    @using (Html.BeginForm("AdminGuncelle", "Admin", FormMethod.Post))
+                    {
+
+                        <div class="mb-4">
+                            <h6>Kullanıcı No</h6>
+                            @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+
+                        <div class="mb-4">
+                            <h6>Kullanıcı Adi</h6>
+                            @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+                        </div>
+
+                        <div class="mb-4">
+                            <h6>Şifre</h6>
+                            @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+                        </div>
+
+                        <a href="/Admin/Admin/" class="btn btn-danger">İptal</a>
+                        <button class="btn btn-success">Güncelle</button>
+
+
+                    }
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

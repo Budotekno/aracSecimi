@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!doctype html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/webLogin/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/webLogin/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/webLogin/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="/webLogin/css/style.css">
+
+    <title>Esbuzi Car Giriş</title>
+</head>
+<body>
+
+
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/webLogin/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <br />
+                                <br />
+                                <br />
+
+                                <div class="text-center mb-4">
+                                    <h3 class="section-title px-5"><span class="px-2">Esbuzi Car Giriş </span></h3>
+                                </div>
+
+                               
+
+
+                                <p class="mb-4 text-center text-danger">@ViewBag.yanlıs</p>
+                            </div>
+                            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                            {
+                                <div class="form-group first last">
+                                    <label for="username">Kullanıcı Adı</label>
+                                    <input type="text" name="KullaniciAdi" class="form-control" id="username">
+
+                                </div>
+                                <br />
+                                <div class="form-group first last mb-4">
+                                    <label for="password">Şifre</label>
+                                    <input type="password" name="Sifre" class="form-control" id="password">
+
+                                </div>
+
+                                <input type="submit" value="Giriş Yap" class="btn btn-block btn-primary">
+
+
+
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/webLogin/js/jquery-3.3.1.min.js"></script>
+    <script src="/webLogin/js/popper.min.js"></script>
+    <script src="/webLogin/js/bootstrap.min.js"></script>
+    <script src="/webLogin/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿@using aracSecimi.Models.Siniflar
+@model List<Admin>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Admin</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="table">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                            <th>#</th>
+                            <th>Kullanıcı Adı</th>
+                            <th>Şifre</th>
+
+                            <th>Sil</th>
+
+                            <th>Güncelle</th>
+
+
+
+                            </thead>
+
+
+                            <tbody>
+
+                                @foreach (var i in Model)
+                                {
+
+                                    <tr>
+
+                                        <td>@i.Id</td>
+                                        <td>@i.KullaniciAdi</td>
+                                        <td>
+                                            @for (int a = 0; a < i.Sifre.Length; a++)
+                                            {
+                                                <span>*</span>
+
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href="/Admin/AdminSil/@i.Id/" class="btn btn-danger">Sil</a>
+                                        </td>
+                                        <td>
+                                            <a href="/Admin/AdminGüncelleId/@i.Id/" class="btn btn-success">Güncelle</a>
+                                        </td>
+
+                                    </tr>
+
+                                }
+
+
+
+                            </tbody>
+
+
+                        </table>
+
+                        <a class="btn btn-warning"   data-toggle="modal" data-target="#exampleModal">Kullanıcı Ekle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kullanıcı Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            @using (Html.BeginForm("YeniKullaniciEkle", "Admin", FormMethod.Post))
+            {
+
+                <div class="modal-body">
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Kullanıcı Adı</label>
+                        <input autocomplete="off" type="text" class="form-control" name="KullaniciAdi" id="exampleFormControlInput1" placeholder="Kullanıcı adını giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Şifre</label>
+                        <input  autocomplete="off" type="password" class="form-control" name="Sifre" id="exampleFormControlInput1" placeholder="Şifreyi giriniz">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-warning">Ekle</button>
+                </div>
+
+            }
+
+
+
+
+        </div>
+    </div>
+</div>
+
+

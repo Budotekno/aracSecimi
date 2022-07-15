@@ -1,0 +1,121 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+   
+    .a:hover {
+        color: white;
+        text-decoration: none;
+
+    }
+</style>
+
+<br />
+<br />
+
+<div>
+
+
+    <br />
+  
+        <div class="row px-xl-5">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 mb-5" style="border-radius:10px; padding:40px; box-shadow:2px 2px 10px #ccc">
+
+                @if (ViewBag.AId != 0)
+                {
+
+
+                    <div class="text-center mb-4">
+                        <h2 class="section-title px-5"><span class="px-2">Araç Seçimi </span></h2>
+                    </div>
+
+                    <div class="contact-form">
+                        <div id="success"></div>
+
+
+
+                        <div class="row">
+
+
+                            <div class="col-12 alert alert-light">
+                                @ViewBag.Soru
+                            </div>
+
+
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+
+
+                            <a href="/AracSecimi/Index/@ViewBag.AId" class="col-5 alert alert-dark a">
+                                <div>
+                                    A- @ViewBag.A
+                                </div>
+                            </a>
+
+                            <div style="width:150px"></div>
+
+                            <a href="/AracSecimi/Index/@ViewBag.BId" class="col-5 alert alert-dark a">
+                                <div>
+                                    B- @ViewBag.B
+                                </div>
+                            </a>
+
+                            <br />
+                            <br />
+
+                            <a href="/AracSecimi/Index/@ViewBag.CId" class="col-5 alert alert-dark a">
+                                <div>
+                                    C- @ViewBag.C
+                                </div>
+                            </a>
+
+                            <div style="width:150px"></div>
+
+                            <a href="/AracSecimi/Index/@ViewBag.DId" class="col-5 alert alert-dark a">
+                                <div>
+                                    D- @ViewBag.D
+                                </div>
+                            </a>
+
+
+
+                        </div>
+
+
+                    </div>
+
+                }
+                else
+                {
+
+                     <div class="text-center mb-4">
+                         <h2 class="section-title px-5"><span class="px-2">Sizin İçin En Uygun Araç</span></h2>
+                         <br />
+                         <br />
+                         <a href="/AracSecimi/AracSonuc/@ViewBag.AracId" class="btn btn-success" style="border-radius:5px;">Sonucu göster</a>
+
+                     </div>
+                }
+
+
+            </div>
+            <div class="col-lg-2"></div>
+
+        </div>
+
+    
+
+
+
+</div>
+
+<div style="height:195px"></div>

@@ -1,0 +1,193 @@
+﻿ 
+@model aracSecimi.Models.Siniflar.Arac
+
+@{
+    ViewBag.Title = "AracGuncelleId";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Araç Güncelle</h4>
+                </div>
+                <div class="card-body">
+
+
+                    @using (Html.BeginForm("AracGuncelle", "Admin", FormMethod.Post))
+                    {
+                        <div class="row">
+
+                            <div class="col-6">
+                                <div class="mb-4">
+                                    <h6>Araç No</h6>
+                                    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Fiyat</h6>
+                                    @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+                                </div>
+
+
+
+                                <div class="mb-4">
+                                    <h6>Marka</h6>
+                                    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Seri</h6>
+                                    @Html.TextBoxFor(x => x.Seri, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Model</h6>
+                                    @Html.TextBoxFor(x => x.Model, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Renk</h6>
+                                    @Html.TextBoxFor(x => x.Renk, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Üretim Yılı</h6>
+                                    @Html.TextBoxFor(x => x.UretimYili, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Yakıt</h6>
+                                    @Html.TextBoxFor(x => x.Yakit, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Vites</h6>
+                                    @Html.TextBoxFor(x => x.Vites, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Araç Km</h6>
+                                    @Html.TextBoxFor(x => x.AracKm, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Kasa Tipi</h6>
+                                    @Html.TextBoxFor(x => x.KasaTipi, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Fotoğraf Url 1</h6>
+                                    @Html.TextBoxFor(x => x.FotoUrl, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Fotoğraf Url 2</h6>
+                                    @Html.TextBoxFor(x => x.FotoUrl2, new { @class = "form-control" })
+                                </div>
+                            
+
+
+                            </div>
+
+
+                            <div class="col-6">
+
+                                <div class="mb-4">
+                                    <h6>Motor Gücü</h6>
+                                    @Html.TextBoxFor(x => x.MotorGucu, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Motor Hacmi</h6>
+                                    @Html.TextBoxFor(x => x.MotorHacmi, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Çekiş</h6>
+                                    @Html.TextBoxFor(x => x.Cekis, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Yakıt Tüketimi</h6>
+                                    @Html.TextBoxFor(x => x.YakitTuketimi, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Şehir İçi Tüketim</h6>
+                                    @Html.TextBoxFor(x => x.SehirIci, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Ortalama Tüketim</h6>
+                                    @Html.TextBoxFor(x => x.OrtalamaTuketim, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Depolama Hacmi</h6>
+                                    @Html.TextBoxFor(x => x.DepoHacmi, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>0-100 Km/h Hızlanma</h6>
+                                    @Html.TextBoxFor(x => x.Hizlanma0_100, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Azami Sürat</h6>
+                                    @Html.TextBoxFor(x => x.AzamiSurat, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Maksimum Tork</h6>
+                                    @Html.TextBoxFor(x => x.MaxTork, new { @class = "form-control" })
+                                </div>
+
+
+                                <div class="mb-4">
+                                    <h6>Fotoğraf Url 3</h6>
+                                    @Html.TextBoxFor(x => x.FotoUrl3, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Fotoğraf Url 4</h6>
+                                    @Html.TextBoxFor(x => x.FotoUrl4, new { @class = "form-control" })
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Fotoğraf Url 5</h6>
+                                    @Html.TextBoxFor(x => x.FotoUrl5, new { @class = "form-control" })
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                       
+
+                      
+
+                        <a href="/Admin/Index/" class="btn btn-danger">İptal</a>
+                        <button class="btn btn-success">Güncelle</button>
+
+
+                    }
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

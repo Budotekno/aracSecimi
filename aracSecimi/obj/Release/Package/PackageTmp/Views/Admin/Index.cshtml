@@ -1,0 +1,423 @@
+﻿@using aracSecimi.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Arac>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Araçlar</h4>
+                </div>
+
+
+
+
+
+                <div class="card-body">
+                    <div class="table">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                            <th>#</th>
+                            <th width="250">Fotoğraf</th>
+                            <th>Marka</th>
+                            <th>Model</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+
+
+                            </thead>
+
+
+                            <tbody>
+
+                                @foreach (var i in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @i.Id
+                                        </td>
+                                        <td>
+                                            <img width="300" src="@i.FotoUrl" />
+                                        </td>
+                                        <td>
+                                            @i.Marka
+                                        </td>
+                                        <td>
+                                            @i.Model
+                                        </td>
+
+
+                                        <td>
+                                            <a href="/Admin/AracSil/@i.Id/" class="btn btn-danger">Sil</a>
+                                        </td>
+
+                                        <td>
+                                            <a href="/Admin/AracGuncelleId/@i.Id/" class="btn btn-success">Güncelle</a>
+                                        </td>
+
+                                    </tr>
+
+
+                                }
+
+
+
+
+
+
+
+                            </tbody>
+
+
+
+
+
+
+
+
+                        </table>
+
+                        <div>
+                            <a class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Kullanıcı Ekle</a>
+                        </div>
+
+                        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Araç Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            @using (Html.BeginForm("AracEkle", "Admin", FormMethod.Post))
+            {
+
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-6">
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Fiyat</label>
+                        <input autocomplete="off" type="text" class="form-control" name="Fiyat" id="exampleFormControlInput1"
+                               placeholder="Aracın fiyatını giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Marka</label>
+                        <input autocomplete="off" type="text" class="form-control" name="Marka" id="exampleFormControlInput1"
+                               placeholder="Aracın markasını giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Seri</label>
+                        <input autocomplete="off" type="text" class="form-control" name="Seri" id="exampleFormControlInput1"
+                               placeholder="Seri numarasını giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Model</label>
+                        <input autocomplete="off" type="text" class="form-control" name="Model" id="exampleFormControlInput1"
+                               placeholder="Aracın modelini giriniz">
+                    </div>
+
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlSelect1">Renk</label>
+                        <select class="form-control" name="Renk" id="exampleFormControlSelect1">
+                            <option selected>Seçiniz</option>
+                            <option value="Bej">Bej</option>
+                            <option value="Beyaz">Beyaz</option>
+                            <option value="Bordo">Füme</option>
+                            <option value="Gri">Gri</option>
+                            <option value="Gümüş Gri">Gümüş Gri</option>
+                            <option value="Kahverengi">Kahverengi</option>
+                            <option value="Kırmızı">Kırmızı</option>
+                            <option value="Lacivert">Lacivert</option>
+                            <option value="Mavi">Mavi</option>
+                            <option value="Mor">Mor</option>
+                            <option value="Pembe">Pembe</option>
+                            <option value="Sarı">Sarı</option>
+                            <option value="Siyah">Siyah</option>
+                            <option value="Şampanya">Şampanya</option>
+                            <option value="Turkuaz">Turkuaz</option>
+                            <option value="Turuncu">Turuncu</option>
+                            <option value="Yeşil">Yeşil</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Üretim Yılı</label>
+                        <input autocomplete="off" type="text" maxlength="4" class="form-control" name="UretimYili" id="exampleFormControlInput1"
+                               placeholder="YYYY">
+                    </div>
+
+
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlSelect1">Yakıt</label>
+                        <select class="form-control" name="Yakit" id="exampleFormControlSelect1">
+                            <option selected>Seçiniz</option>
+                            <option value="Benzin">Benzin</option>
+                            <option value="Benzin & LPG">Benzin & LPG</option>
+                            <option value="Dizel">Dizel</option>
+                            <option value="Hybrid">Hybrid</option>
+                            <option value="Elektrik">Elektrik</option>
+
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlSelect1">Vites</label>
+                        <select class="form-control" name="Vites" id="exampleFormControlSelect1">
+                            <option selected>Seçiniz</option>
+                            <option value="Manuel">Manuel</option>
+                            <option value="Yarı Otomatik">Yarı Otomatik</option>
+                            <option value="Otomatik">Otomatik</option>
+
+
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Araç Km</label>
+                        <input autocomplete="off" type="number" class="form-control" name="AracKm" id="exampleFormControlInput1"
+                               placeholder="Aracın kilometresini giriniz">
+                    </div>
+
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlSelect1">Kasa Tipi</label>
+                        <select class="form-control" name="KasaTipi" id="exampleFormControlSelect1">
+                            <option selected>Seçiniz</option>
+                            <option value="Cabrio">Cabrio</option>
+                            <option value="Coupe">Coupe</option>
+                            <option value="Crossover">Crossover</option>
+                            <option value="Hatchback 3 Kapı">Hatchback 3 Kapı</option>
+                            <option value="Hatchback 5 Kapı">Hatchback 5 Kapı</option>
+                            <option value="Hard Top">Hard Top</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="Station Wagon">Station Wagon</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Minibüs">Minibüs</option>
+                            <option value="Pickup">Pickup</option>
+                            <option value="MPV">MPV</option>
+                            <option value="Roadster">Roadster</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Fotoğraf URL 1</label>
+                        <input autocomplete="off" type="text" class="form-control" name="FotoUrl" id="exampleFormControlInput1"
+                               placeholder="Fotoğraf url giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Fotoğraf URL 2</label>
+                        <input autocomplete="off" type="text" class="form-control" name="FotoUrl2" id="exampleFormControlInput1"
+                               placeholder="Fotoğraf url giriniz">
+                    </div>
+
+
+                </div>
+                <div class="col-6">
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlSelect1">Motor Gücü</label>
+                        <select class="form-control" name="MotorGucu" id="exampleFormControlSelect1">
+                            <option selected>Seçiniz</option>
+                            <option value="50 HP'ye kadar">50 HP'ye kadar</option>
+                            <option value="51 - 75 HP">51 - 75 HP</option>
+                            <option value="76 - 100 HP">76 - 100 HP</option>
+                            <option value="101 - 125 HP">101 - 125 HP</option>
+                            <option value="126 - 150 HP">126 - 150 HP</option>
+                            <option value="151 - 175 HP">151 - 175 HP</option>
+                            <option value="176 - 200 HP">176 - 200 HP</option>
+                            <option value="201 - 225 HP">201 - 225 HP</option>
+                            <option value="226 - 250 HP">226 - 250 HP</option>
+                            <option value="251 - 275 HP">251 - 275 HP</option>
+                            <option value="276 - 300 HP">276 - 300 HP</option>
+                            <option value="301 - 325 HP">301 - 325 HP</option>
+                            <option value="326 - 350 HP">326 - 350 HP</option>
+                            <option value="351 - 375 HP">351 - 375 HP</option>
+                            <option value="376 - 400 HP">376 - 400 HP</option>
+                            <option value="401 - 425 HP">401 - 425 HP</option>
+                            <option value="426 - 450 HP">426 - 450 HP</option>
+                            <option value="451 - 475 HP">451 - 475 HP</option>
+                            <option value="476 - 500 HP">476 - 500 HP</option>
+                            <option value="501 - 525 HP">502 - 525 HP</option>
+                            <option value="526 - 550 HP">526 - 550 HP</option>
+                            <option value="551 - 575 HP">551 - 575 HP</option>
+                            <option value="576 - 600 HP">576 - 600 HP</option>
+                            <option value="601 HP ve üzeri">601 HP ve üzeri</option>
+
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlSelect1">Motor Hacmi</label>
+                        <select class="form-control" name="MotorHacmi" id="exampleFormControlSelect1">
+                            <option selected>Seçiniz</option>
+                            <option value="1300 cm3' e kadar">1300 cm3' e kadar</option>
+                            <option value="1301 - 1600 cm3">1301 - 1600 cm3</option>
+                            <option value="1601 - 1800 cm3">1601 - 1800 cm3</option>
+                            <option value="1801 - 2000 cm3">1801 - 2000 cm3</option>
+                            <option value="2001 - 2500 cm3">2001 - 2500 cm3</option>
+                            <option value="2501 - 3000 cm3">2501 - 3000 cm3</option>
+                            <option value="3001 - 3500 cm3">3001 - 3500 cm3</option>
+                            <option value="3501 - 4000 cm3">3501 - 4000 cm3</option>
+                            <option value="4001 - 4500 cm3">4001 - 4500 cm3</option>
+                            <option value="4501 - 5000 cm3">4501 - 5000 cm3</option>
+                            <option value="5001 - 5500 cm3">5001 - 5500 cm3</option>
+                            <option value="5501 - 6000 cm3">5501 - 6000 cm3</option>
+                            <option value="6001 cm3 ve üzeri">6001 cm3 ve üzeri</option>
+
+
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlSelect1">Çekiş</label>
+                        <select class="form-control" name="Cekis" id="exampleFormControlSelect1">
+                            <option selected>Seçiniz</option>
+                            <option value="Önden Çekiş">Önden Çekiş</option>
+                            <option value="Arkadan İtiş">Arkadan İtiş</option>
+                            <option value="4WD (Sürekli)">4WD (Sürekli)</option>
+                            <option value="AWD (Elektronik)">AWD (Elektronik)</option>
+                            <option value="4x2 (Arkadan İtişli)">4x2 (Arkadan İtişli)</option>
+                            <option value="4x2 (Önden İtişli)">4x2 (Önden İtişli)</option>
+                            <option value="4x4">4x4</option>
+
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Yakıt Tüketimi</label>
+                        <input autocomplete="off" type="text" class="form-control" name="YakitTuketimi" id="exampleFormControlInput1"
+                               placeholder="Yakıt tüketimini giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Şehir İçi Tüketim</label>
+                        <input autocomplete="off" type="text" class="form-control" name="SehirIci" id="exampleFormControlInput1"
+                               placeholder="Şehir içi tüketimi giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Ortalama Tüketim</label>
+                        <input autocomplete="off" type="text" class="form-control" name="OrtalamaTuketim" id="exampleFormControlInput1"
+                               placeholder="Ortalama tüketimi giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Depolama Hacmi</label>
+                        <input autocomplete="off" type="text" class="form-control" name="DepoHacmi" id="exampleFormControlInput1"
+                               placeholder="Depolama hacmini giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">0-100 Km/h Hızlanma</label>
+                        <input autocomplete="off" type="text" class="form-control" name="Hizlanma0_100" id="exampleFormControlInput1"
+                               placeholder="Hızlanmayı giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Azami Sürat</label>
+                        <input autocomplete="off" type="text" class="form-control" name="AzamiSurat" id="exampleFormControlInput1"
+                               placeholder="Aracın kilometresini giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Maksimum Tork</label>
+                        <input autocomplete="off" type="text" class="form-control" name="MaxTork" id="exampleFormControlInput1"
+                               placeholder="Maksimum torku giriniz">
+                    </div>
+
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Fotoğraf URL 3</label>
+                        <input autocomplete="off" type="text" class="form-control" name="FotoUrl3" id="exampleFormControlInput1"
+                               placeholder="Fotoğraf url giriniz">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlInput1">Fotoğraf URL 4</label>
+                        <input autocomplete="off" type="text" class="form-control" name="FotoUrl4" id="exampleFormControlInput1"
+                               placeholder="Fotoğraf url giriniz">
+                    </div>
+
+
+                </div>
+            </div>
+
+           
+            <div class="form-group mb-3">
+                <label for="exampleFormControlInput1">Fotoğraf URL 5</label>
+                <input autocomplete="off" type="text" class="form-control" name="FotoUrl5" id="exampleFormControlInput1"
+                       placeholder="Fotoğraf url giriniz">
+            </div>
+
+
+
+        </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-warning">Ekle</button>
+                </div>
+
+            }
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,218 @@
+﻿@using aracSecimi.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Arac>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<div class="row px-xl-5">
+    <!-- Shop Sidebar Start -->
+    <div class="col-lg-3 col-md-12">
+        <!-- Price Start -->
+        <div class=" mb-4 pb-4">
+            <div class="text-center mb-4">
+                <h2 class="section-title px-5"><span class="px-2">Filtrele </span></h2>
+            </div>
+            <form>
+                <div>
+                    <h5 class="font-weight-semi-bold mb-4">Yakıt</h5>
+
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-1">
+                        <label class="custom-control-label" for="price-1">Benzin</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-2">
+                        <label class="custom-control-label" for="price-2">Benzin & LPG</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-3">
+                        <label class="custom-control-label" for="price-3">Dizel</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-4">
+                        <label class="custom-control-label" for="price-4">Hybrid</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="checkbox" class="custom-control-input" id="price-5">
+                        <label class="custom-control-label" for="price-5">Elektrik</label>
+                    </div>
+                    <br>
+                    <div class="border-bottom"></div>
+
+                </div>
+
+                <br />
+
+
+                <div>
+                    <h5 class="font-weight-semi-bold mb-4">Çekiş</h5>
+
+
+
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-1">
+                        <label class="custom-control-label" for="price-1">Önden Çekiş</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-2">
+                        <label class="custom-control-label" for="price-2">Arkadan İtiş</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-3">
+                        <label class="custom-control-label" for="price-3">4WD (Sürekli)</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-4">
+                        <label class="custom-control-label" for="price-4">AWD (Elektrik)</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="checkbox" class="custom-control-input" id="price-5">
+                        <label class="custom-control-label" for="price-5">4x4</label>
+                    </div>
+
+
+
+
+                    <br>
+                    <div class="border-bottom"></div>
+
+                </div>
+
+                <br />
+
+                <div>
+                    <h5 class="font-weight-semi-bold mb-4">Kasa Tipi</h5>
+
+
+
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-1">
+                        <label class="custom-control-label" for="price-1">Cabrio</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-2">
+                        <label class="custom-control-label" for="price-2">Coupe</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-3">
+                        <label class="custom-control-label" for="price-3">Hatchback</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-4">
+                        <label class="custom-control-label" for="price-4">SUV</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="checkbox" class="custom-control-input" id="price-5">
+                        <label class="custom-control-label" for="price-5">Sedan</label>
+                    </div>
+                   
+
+
+
+
+                    <br>
+                    <div class="border-bottom"></div>
+
+                </div>
+                <br />
+
+                <div>
+                    <h5 class="font-weight-semi-bold mb-4">Vites</h5>
+
+
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-2">
+                        <label class="custom-control-label" for="price-2">Manuel</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-3">
+                        <label class="custom-control-label" for="price-3">Yarı Otomatik</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-4">
+                        <label class="custom-control-label" for="price-4">Otomatik</label>
+                    </div>
+
+
+                    <br>
+                    <div class="border-bottom"></div>
+
+                </div>
+                <br />
+
+                <div class="text-center mb-4">
+                    <input style="width:150px; border-radius:5px" type="submit" class="btn btn-danger" value="İptal" />
+                    <input style="width:150px; border-radius:5px" type="submit" class="btn btn-info" value="Filtrele" />
+
+                </div>
+
+
+
+            </form>
+        </div>
+        <!-- Price End -->
+        <!-- Color Start -->
+
+
+        
+
+    </div>
+
+
+
+    <!-- Shop Sidebar End -->
+    <!-- Shop Product Start -->
+
+    
+    <div class="col-lg-9 col-md-12">
+
+
+
+        <div class="row pb-3">
+
+            @foreach (var i in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                    <div class="card product-item border-0 mb-4">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img class="" height="200" style="max-width: 350px; display: block; margin: auto;" src="@i.FotoUrl" alt="">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-2">
+                            <h6 class="text-truncate mb-3">@i.Marka - @i.Model</h6>
+                            <div class="d-flex justify-content-center">
+                                <h6 class="text-muted ml-2">@i.Fiyat ₺</h6>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border">
+
+                            <a class="btn btn-secondary text-center" href="/Anasayfa/AracDetay/@i.Id/">Detaylara Bak</a>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+
+
+
+        </div>
+
+        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+    </div>
+    <!-- Shop Product End -->
+</div>
+

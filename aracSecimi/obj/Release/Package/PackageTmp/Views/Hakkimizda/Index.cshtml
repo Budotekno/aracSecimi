@@ -1,0 +1,98 @@
+﻿@using aracSecimi.Models.Siniflar
+@model List<Hakkimizda>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .hakkimizda {
+        width: 500px;
+        border-radius: 10px;
+      
+        box-shadow: 2px 2px 10px #808080;
+    }
+</style>
+
+
+<br />
+<br />
+<div class="text-center mb-4">
+    <h2 class="section-title px-5"><span class="px-2">Hakkımızda </span></h2>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        @foreach (var i in Model)
+        {
+            <div class="col-lg-6">
+                <img class="hakkimizda" src="@i.FotoUrl" />
+            </div>
+
+        }
+
+
+    <div class="col-lg-6 mb-5">
+
+        @foreach (var i in Model)
+        {
+
+            <h5 class="font-weight-semi-bold mb-3">@i.Baslik</h5>
+            <p class="text-justify">
+               @i.HakkimizdaYazi
+            </p>
+
+        }
+
+
+        <div class="d-flex flex-column mb-3">
+            <h5 class="font-weight-semi-bold mb-3">Katkıda Bulunanlar</h5>
+
+            <div class="row">
+                <div class="col-1">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/user--v1.png" width="25" />
+                </div>
+                <div class="col-8">
+                    <p class="mb-2"> <strong> Buğra Dost : </strong> Kodlamadan ve veritabanından sorumlu.</p>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-1">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/user--v1.png" width="25" />
+                </div>
+                <div class="col-8">
+                    <p class="mb-2"> <strong> Mahmud Esad Durukan :</strong> Soruların yazılmasında ve makaleden sorumlu.</p>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-1">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/user--v1.png" width="25" />
+                </div>
+                <div class="col-8">
+                    <p class="mb-2"> <strong> Ziya Savcı :</strong> Verileri araştırma ve verilerin sisteme girilmesinden sorumlu.</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    </div>
+
+   
+</div>
+
+<div style="height:50px"></div>
+
+
